@@ -1,106 +1,166 @@
 /* Global Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-    color: #e0e0e0;
-    height: 100vh;
-    overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3f 100%);
+  color: #e0e0e0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Canvas Container */
 #canvas-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* UI Overlay */
+/* UI Overlay - Centered */
 #ui-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  pointer-events: auto;
+  z-index: 10;
 }
 
-/* Info Panel */
-.info-panel {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    background: rgba(10, 10, 10, 0.8);
-    padding: 20px 30px;
-    border-radius: 10px;
-    border: 1px solid rgba(100, 200, 255, 0.3);
-    backdrop-filter: blur(10px);
-    pointer-events: all;
+/* Title */
+#ui-overlay h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #00d4ff;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
 }
 
-.info-panel h1 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #64c8ff;
-    margin-bottom: 8px;
+/* Subtitle */
+#ui-overlay p:first-of-type {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
 }
 
-.info-panel p {
-    font-size: 14px;
-    color: #a0a0a0;
+/* Command Box Container */
+.command-box {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  width: 380px;
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* Controls Panel */
+.command-box:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+}
+
+/* Input Field */
+#command-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 14px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#command-input:focus {
+  outline: none;
+  border-color: rgba(0, 212, 255, 0.6);
+  background: rgba(0, 212, 255, 0.05);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.1);
+}
+
+#command-input::placeholder {
+  color: #666;
+}
+
+/* Command Button */
+#command-button {
+  width: 100%;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+#command-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+}
+
+#command-button:active {
+  transform: translateY(0);
+}
+
+/* Status Message */
+#command-status {
+  font-size: 13px;
+  color: #00d4ff;
+  text-align: center;
+  min-height: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Controls Panel - Bottom Center */
 .controls-panel {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    background: rgba(10, 10, 10, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(100, 200, 255, 0.3);
-    backdrop-filter: blur(10px);
-    pointer-events: all;
-    max-width: 400px;
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px 24px;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+  z-index: 10;
+}
+
+.control-info {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+.control-info strong {
+  color: #00d4ff;
+  font-weight: 600;
 }
 
 .control-info p {
-    font-size: 12px;
-    color: #a0a0a0;
-    line-height: 1.8;
+  margin-bottom: 8px;
 }
 
-.control-info p strong {
-    color: #64c8ff;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .info-panel {
-        top: 15px;
-        left: 15px;
-        padding: 15px 20px;
-    }
-
-    .info-panel h1 {
-        font-size: 20px;
-    }
-
-    .controls-panel {
-        bottom: 15px;
-        left: 15px;
-        padding: 15px;
-    }
-
-    .control-info p {
-        font-size: 11px;
-    }
+.control-info p:last-child {
+  margin-bottom: 0;
 }
