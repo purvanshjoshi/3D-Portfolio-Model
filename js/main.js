@@ -3,7 +3,7 @@
 
 let scene, camera, renderer, container;
 let portfolioModel;
-let isAnimating = false;
+let isAnimating = true;
 let isControlsActive = true;
 let holographicAvatar;
 let holographicHUD;
