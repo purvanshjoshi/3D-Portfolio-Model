@@ -5,6 +5,8 @@ let scene, camera, renderer, container;
 let portfolioModel;
 let isAnimating = false;
 let isControlsActive = true;
+let holographicAvatar;
+let holographicHUD;
 
 // Initialize the application
 function init() {
@@ -36,6 +38,10 @@ function init() {
   
   // Setup animations
   setupAnimations();
+
+    // Initialize holographic avatar and HUD
+  holographicAvatar = createAvatar(scene);
+  holographicHUD = createHUD(scene, holographicAvatar);
   
   // Handle window resize
   window.addEventListener('resize', onWindowResize);
@@ -50,6 +56,10 @@ function animate() {
   
   if (isAnimating) {
     updateAnimations();
+      
+  // Animate holographic avatar and HUD
+  if (holographicAvatar) holographicAvatar.animate(Date.now());
+  if (holographicHUD) holographicHUD.animate(Date.now());
   }
   
   renderer.render(scene, camera);
