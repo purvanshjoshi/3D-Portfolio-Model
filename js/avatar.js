@@ -7,8 +7,8 @@ class HolographicAvatar {
     this.avatar = new THREE.Group();
     this.joints = {};
     this.buildHumanAvatar();
-        this.avatar.scale.multiplyScalar(2.5);
-        this.avatar.position.set(0, 0, 0);
+    this.avatar.scale.multiplyScalar(2.5);
+    this.avatar.position.set(0, 0, 0);
     this.scene.add(this.avatar);
   }
 
@@ -18,9 +18,6 @@ class HolographicAvatar {
     const clothMaterial = new THREE.MeshPhongMaterial({ color: 0x2a2a4a });
     const hairMaterial = new THREE.MeshPhongMaterial({ color: 0x1a1a2e });
 
-    // Position avatar
-    this.avatar.position.set(3, 0.5, 0);
-
     // Head
     const headGeometry = new THREE.SphereGeometry(0.3, 32, 32);
     const head = new THREE.Mesh(headGeometry, skinMaterial);
@@ -29,7 +26,7 @@ class HolographicAvatar {
     this.avatar.add(head);
     this.joints.head = head;
 
-    // Hair/Top of head
+    // Hair
     const hairGeometry = new THREE.SphereGeometry(0.32, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.5);
     const hair = new THREE.Mesh(hairGeometry, hairMaterial);
     hair.position.y = 2.25;
@@ -115,42 +112,33 @@ class HolographicAvatar {
   animate(time) {
     const t = time * 0.001;
     
-    // Walking animation
-    const walkCycle = Math.sin(t * 2) * 0.2;
     if (this.joints.leftLeg) {
       this.joints.leftLeg.rotation.x = Math.sin(t * 2) * 0.3;
     }
     if (this.joints.rightLeg) {
       this.joints.rightLeg.rotation.x = Math.sin(t * 2 + Math.PI) * 0.3;
     }
-
-    // Arm swing animation
     if (this.joints.leftArm) {
       this.joints.leftArm.rotation.x = Math.sin(t * 2 + Math.PI) * 0.25;
     }
     if (this.joints.rightArm) {
       this.joints.rightArm.rotation.x = Math.sin(t * 2) * 0.25;
     }
-
-    // Head rotation
     if (this.joints.head) {
       this.joints.head.rotation.y = Math.sin(t * 0.5) * 0.2;
     }
-
-    // Torso sway
     if (this.joints.torso) {
       this.joints.torso.rotation.x = Math.sin(t * 2) * 0.1;
     }
-
-    // Continuous rotation
     this.avatar.rotation.y += 0.002;
   }
 }
 
 function createAvatar(scene) {
   return new HolographicAvatar(scene);
+}
 
-  // Command processing system
+// Command processing system
 let currentAvatar = null;
 
 function processCommand(command) {
@@ -218,4 +206,3 @@ HolographicAvatar.prototype.executeSpin = function() {
   this.spinAnimation = true;
   setTimeout(() => { this.spinAnimation = false; }, 2000);
 };
-}
