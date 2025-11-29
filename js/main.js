@@ -45,6 +45,8 @@ function init() {
   
   // Handle window resize
   window.addEventListener('resize', onWindowResize);
+    setCurrentAvatar(holographicAvatar);
+    setupCommandBox();
   
   // Start animation loop
   animate();
@@ -91,4 +93,33 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
+
+  // Setup command input
+function setupCommandBox() {
+  const commandInput = document.getElementById('command-input');
+  const commandButton = document.getElementById('command-button');
+  const commandStatus = document.getElementById('command-status');
+  
+  if (!commandButton || !commandInput) return;
+  
+  commandButton.addEventListener('click', () => {
+    const command = commandInput.value;
+    if (command.trim()) {
+      const result = processCommand(command);
+      commandStatus.textContent = result;
+      commandInput.value = '';
+    }
+  });
+  
+  commandInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      commandButton.click();
+    }
+  });
+}
+
+// Set current avatar after creation
+function setCurrentAvatar(avatar) {
+  currentAvatar = avatar;
+}
 }
