@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Portfolio Model - Interactive 3D Visualization</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="canvas-container"></div>
+    
+    <div id="ui-overlay">
+        <div class="info-panel">
+            <h1>3D Portfolio Model</h1>
+            <p>Interactive 3D visualization of my portfolio</p>
+        </div>
+        <div class="controls-panel">
+            <div class="control-info">
+                <p><strong>Controls:</strong></p>
+                <p>🖱️ Drag to rotate | 🔄 Scroll to zoom | ⌨️ Arrow keys to navigate</p>
+                <p>Press <strong>R</strong> to reset view | <strong>SPACE</strong> to toggle animation</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP Animation library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Project JavaScript files -->
+    <script src="js/scene.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
