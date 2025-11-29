@@ -7,6 +7,8 @@ class HolographicAvatar {
     this.avatar = new THREE.Group();
     this.joints = {};
     this.buildHumanAvatar();
+        this.avatar.scale.multiplyScalar(2.5);
+        this.avatar.position.set(0, 0, 0);
     this.scene.add(this.avatar);
   }
 
