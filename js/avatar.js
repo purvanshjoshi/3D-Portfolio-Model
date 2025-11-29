@@ -17,7 +17,7 @@ class HolographicAvatar {
     const hairMaterial = new THREE.MeshPhongMaterial({ color: 0x1a1a2e });
 
     // Position avatar
-    this.avatar.position.y = -1;
+    this.avatar.position.set(3, 0.5, 0);
 
     // Head
     const headGeometry = new THREE.SphereGeometry(0.3, 32, 32);
