@@ -149,4 +149,73 @@ class HolographicAvatar {
 
 function createAvatar(scene) {
   return new HolographicAvatar(scene);
+
+  // Command processing system
+let currentAvatar = null;
+
+function processCommand(command) {
+  if (!currentAvatar) return 'No avatar available';
+  
+  const cmd = command.toLowerCase().trim();
+  
+  switch(cmd) {
+    case 'wave':
+      currentAvatar.executeWave();
+      return '👋 Avatar is waving!';
+    case 'jump':
+      currentAvatar.executeJump();
+      return '⬆️ Avatar is jumping!';
+    case 'dance':
+      currentAvatar.executeDance();
+      return '💃 Avatar is dancing!';
+    case 'walk':
+      currentAvatar.executeWalk();
+      return '🚶 Avatar is walking!';
+    case 'sit':
+      currentAvatar.executeSit();
+      return '🪑 Avatar is sitting!';
+    case 'stand':
+      currentAvatar.executeStand();
+      return '🧍 Avatar is standing!';
+    case 'spin':
+      currentAvatar.executeSpin();
+      return '🌀 Avatar is spinning!';
+    default:
+      return '❓ Unknown command. Try: wave, jump, dance, walk, sit, stand, spin';
+  }
+}
+
+// Add methods to HolographicAvatar
+HolographicAvatar.prototype.executeWave = function() {
+  this.waveAnimation = true;
+  setTimeout(() => { this.waveAnimation = false; }, 2000);
+};
+
+HolographicAvatar.prototype.executeJump = function() {
+  this.jumpAnimation = true;
+  setTimeout(() => { this.jumpAnimation = false; }, 1000);
+};
+
+HolographicAvatar.prototype.executeDance = function() {
+  this.danceAnimation = true;
+  setTimeout(() => { this.danceAnimation = false; }, 3000);
+};
+
+HolographicAvatar.prototype.executeWalk = function() {
+  this.walkAnimation = true;
+  setTimeout(() => { this.walkAnimation = false; }, 2000);
+};
+
+HolographicAvatar.prototype.executeSit = function() {
+  this.sitAnimation = true;
+};
+
+HolographicAvatar.prototype.executeStand = function() {
+  this.sitAnimation = false;
+};
+
+HolographicAvatar.prototype.executeSpin = function() {
+  this.spinAnimation = true;
+  setTimeout(() => { this.spinAnimation = false; }, 2000);
+};
 }
