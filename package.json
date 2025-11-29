@@ -1,0 +1,27 @@
+{
+  "name": "3d-portfolio-model",
+  "version": "1.0.0",
+  "description": "Interactive 3D visualization of my portfolio website using Three.js",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "3d",
+    "portfolio",
+    "three.js",
+    "webgl",
+    "animation"
+  ],
+  "author": "Purvansh Joshi",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^r140",
+    "gsap": "^3.12.2"
+  },
+  "devDependencies": {
+    "vite": "^4.5.0"
+  }
+}
