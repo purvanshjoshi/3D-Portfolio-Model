@@ -1,0 +1,106 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    color: #e0e0e0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Canvas Container */
+#canvas-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* UI Overlay */
+#ui-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Info Panel */
+.info-panel {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: rgba(10, 10, 10, 0.8);
+    padding: 20px 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(100, 200, 255, 0.3);
+    backdrop-filter: blur(10px);
+    pointer-events: all;
+}
+
+.info-panel h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #64c8ff;
+    margin-bottom: 8px;
+}
+
+.info-panel p {
+    font-size: 14px;
+    color: #a0a0a0;
+}
+
+/* Controls Panel */
+.controls-panel {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(10, 10, 10, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(100, 200, 255, 0.3);
+    backdrop-filter: blur(10px);
+    pointer-events: all;
+    max-width: 400px;
+}
+
+.control-info p {
+    font-size: 12px;
+    color: #a0a0a0;
+    line-height: 1.8;
+}
+
+.control-info p strong {
+    color: #64c8ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .info-panel {
+        top: 15px;
+        left: 15px;
+        padding: 15px 20px;
+    }
+
+    .info-panel h1 {
+        font-size: 20px;
+    }
+
+    .controls-panel {
+        bottom: 15px;
+        left: 15px;
+        padding: 15px;
+    }
+
+    .control-info p {
+        font-size: 11px;
+    }
+}
