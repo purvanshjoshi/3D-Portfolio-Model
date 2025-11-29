@@ -206,3 +206,8 @@ HolographicAvatar.prototype.executeSpin = function() {
   this.spinAnimation = true;
   setTimeout(() => { this.spinAnimation = false; }, 2000);
 };
+
+// Set the global currentAvatar reference
+function setCurrentAvatar(avatar) {
+  currentAvatar = avatar;
+}
