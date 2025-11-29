@@ -8,7 +8,7 @@ class HolographicAvatar {
     this.bodyParts = [];
     this.joints = [];
     this.neonMaterial = new THREE.LineBasicMaterial({ color: 0x00FFFF, linewidth: 2, fog: false });
-    this.glow Material = new THREE.MeshBasicMaterial({ color: 0x00FFFF, emissive: 0x00FFFF, emissiveIntensity: 1.5 });
+    this.glowMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF, emissive: 0x00FFFF, emissiveIntensity: 1.5 });
     this.createWireframeAvatar();
     this.scene.add(this.avatar);
   }
