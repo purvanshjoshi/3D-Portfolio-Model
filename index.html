@@ -3,36 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualize - Interactive 3D Command Experience</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Nothing - Experience the Future</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #canvas-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+        }
+        
+        .ui-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        .nothing-header {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            z-index: 50;
+            pointer-events: auto;
+        }
+        
+        .nothing-logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 10px 20px;
+        }
+        
+        .command-section {
+            pointer-events: auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 30px;
+        }
+        
+        #command-input {
+            width: 100%;
+            padding: 16px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 30px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        #command-input:focus {
+            border-bottom-color: #fff;
+        }
+        
+        #command-input::placeholder {
+            color: #666;
+        }
+        
+        #command-button {
+            width: 100%;
+            padding: 14px 0;
+            background: #fff;
+            color: #000;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        #command-button:hover {
+            opacity: 0.8;
+            transform: scale(0.99);
+        }
+        
+        .controls-panel {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            padding: 24px 32px;
+            max-width: 380px;
+            z-index: 50;
+            pointer-events: auto;
+            animation: floating 8s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(0, -20px); }
+        }
+        
+        .controls-panel:hover {
+            animation-play-state: paused;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .control-info {
+            font-size: 12px;
+            color: #999;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+        
+        .control-info strong {
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .control-info p {
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
 <body>
     <div id="canvas-container"></div>
     
-    <div id="ui-overlay">
-<h1>3D Visualize Model</h1>
-            <p>Interactive 3D visualization of my portfolio</p>
-            <div class="command-box">
-              <input type="text" id="command-input" placeholder="Enter command (e.g., wave, jump, dance, walk)" />
-              <button id="command-button">Execute</button>
-              <p id="command-status"></p>
-            </div>
-            
-            <div class="controls-panel">
-              <div class="control-info">
-                <p><strong>Controls:</strong></p>
-                <p>🖱️ Drag to rotate | 🔄 Scroll to zoom</p>
-                <p>⌨️ Arrow keys to navigate | Press <strong>R</strong> to reset view</p>
-                <p>Press <strong>SPACE</strong> to toggle animation</p>
-              </div>
-            </div>
-
-    <!-- Three.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- GSAP Animation library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <div class="nothing-header">
+        <div class="nothing-logo">Nothing</div>
+    </div>
     
-    <!-- Project JavaScript files -->
+    <div class="ui-wrapper">
+        <div class="command-section">
+            <div class="section-title">Experience The Future</div>
+            <input type="text" id="command-input" placeholder="Enter command" />
+            <button id="command-button">Execute</button>
+        </div>
+    </div>
+    
+    <div class="controls-panel">
+        <div class="control-info">
+            <p><strong>CONTROLS</strong></p>
+            <p>Drag to rotate • Scroll to zoom</p>
+            <p>Arrow keys to navigate • Press R to reset</p>
+            <p>Press SPACE to toggle animation</p>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="js/scene.js"></script>
     <script src="js/camera.js"></script>
     <script src="js/renderer.js"></script>
@@ -41,6 +193,21 @@
     <script src="js/controls.js"></script>
     <script src="js/avatar.js"></script>
     <script src="js/main.js"></script>
-     <script src="js/hud.js"></script>
+    <script src="js/hud.js"></script>
+    
+    <script>
+        // Position floating controls randomly
+        window.addEventListener('DOMContentLoaded', () => {
+            const panel = document.querySelector('.controls-panel');
+            const minX = 20, maxX = window.innerWidth - 420;
+            const minY = 100, maxY = window.innerHeight - 200;
+            
+            const randomX = Math.random() * (maxX - minX) + minX;
+            const randomY = Math.random() * (maxY - minY) + minY;
+            
+            panel.style.left = randomX + 'px';
+            panel.style.top = randomY + 'px';
+        });
+    </script>
 </body>
 </html>
