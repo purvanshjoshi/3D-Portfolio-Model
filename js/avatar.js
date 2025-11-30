@@ -14,9 +14,9 @@ class HolographicAvatar {
 
   buildHumanAvatar() {
     // Materials
-    const skinMaterial = new THREE.MeshPhongMaterial({ color: 0xffdbac });
-    const clothMaterial = new THREE.MeshPhongMaterial({ color: 0x2a2a4a });
-    const hairMaterial = new THREE.MeshPhongMaterial({ color: 0x1a1a2e });
+    const skinMaterial = new THREE.MeshPhongMaterial({ color: 0xffdbac });, emissive: 0x333333, emissiveIntensity: 0.4
+    const clothMaterial = new THREE.MeshPhongMaterial({ color: 0x2a2a4a });, emissive: 0x1a1a1a, emissiveIntensity: 0.3
+    const hairMaterial = new THREE.MeshPhongMaterial({ color: 0x1a1a2e });, emissive: 0x0d0d0d, emissiveIntensity: 0.25
 
     // Head
     const headGeometry = new THREE.SphereGeometry(0.3, 32, 32);
