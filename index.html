@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nothing - Experience the Future</title>
+    <title>Visualize - Experience the Future</title>
     <style>
         * {
             margin: 0;
@@ -28,6 +28,56 @@
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
         }
         
+        .visualize-logo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            width: 400px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .visualize-logo {
+            font-size: 96px;
+            font-weight: 900;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 
+                0 0 20px rgba(0, 212, 255, 0.5),
+                0 0 40px rgba(0, 212, 255, 0.3),
+                0 0 60px rgba(0, 212, 255, 0.2);
+            animation: logo-glow 3s ease-in-out infinite, logo-float 4s ease-in-out infinite;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        
+        @keyframes logo-glow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 20px rgba(0, 212, 255, 0.5),
+                    0 0 40px rgba(0, 212, 255, 0.3),
+                    0 0 60px rgba(0, 212, 255, 0.2);
+                letter-spacing: 12px;
+            }
+            50% {
+                text-shadow: 
+                    0 0 40px rgba(0, 212, 255, 0.8),
+                    0 0 60px rgba(0, 212, 255, 0.6),
+                    0 0 100px rgba(0, 212, 255, 0.4);
+                letter-spacing: 18px;
+            }
+        }
+        
+        @keyframes logo-float {
+            0%, 100% { transform: translateY(0) rotateX(0deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); }
+        }
+        
         .avatar-display {
             position: absolute;
             left: 50%;
@@ -39,6 +89,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
+            pointer-events: none;
         }
         
         .avatar-figure {
@@ -131,7 +182,7 @@
         .glow {
             position: absolute;
             inset: -40px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
             border-radius: 50%;
             animation: glow-pulse 3s ease-in-out infinite;
         }
@@ -153,24 +204,6 @@
             align-items: center;
             z-index: 100;
             pointer-events: none;
-        }
-        
-        .nothing-header {
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            z-index: 50;
-            pointer-events: auto;
-        }
-        
-        .nothing-logo {
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: #fff;
-            border: 2px solid #fff;
-            padding: 10px 20px;
         }
         
         .command-section {
@@ -275,6 +308,10 @@
 <body>
     <div id="canvas-container"></div>
     
+    <div class="visualize-logo-container">
+        <div class="visualize-logo">VISUALIZE</div>
+    </div>
+    
     <div class="avatar-display">
         <div class="avatar-figure">
             <div class="glow"></div>
@@ -294,10 +331,6 @@
                 <div class="leg"></div>
             </div>
         </div>
-    </div>
-    
-    <div class="nothing-header">
-        <div class="nothing-logo">Nothing</div>
     </div>
     
     <div class="ui-wrapper">
