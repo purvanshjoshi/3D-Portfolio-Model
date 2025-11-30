@@ -28,6 +28,119 @@
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
         }
         
+        .avatar-display {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        
+        .avatar-figure {
+            position: relative;
+            width: 150px;
+            height: 300px;
+        }
+        
+        .head {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 90px;
+            background: radial-gradient(circle at 30% 30%, #f0c0a0, #d4a574);
+            border-radius: 50% 50% 45% 45%;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+        }
+        
+        .eyes {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .eye {
+            width: 12px;
+            height: 12px;
+            background: #000;
+            border-radius: 50%;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
+        }
+        
+        .body {
+            position: absolute;
+            top: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 120px;
+            background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+            border-radius: 20px 20px 10px 10px;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.15);
+        }
+        
+        .arms {
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .arm {
+            width: 40px;
+            height: 80px;
+            background: radial-gradient(ellipse at 30% 30%, #f5d5b0, #d4a574);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .legs {
+            position: absolute;
+            top: 240px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .leg {
+            width: 30px;
+            height: 80px;
+            background: #333;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+        
+        .glow {
+            position: absolute;
+            inset: -40px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
         .ui-wrapper {
             position: fixed;
             top: 0;
@@ -162,6 +275,27 @@
 <body>
     <div id="canvas-container"></div>
     
+    <div class="avatar-display">
+        <div class="avatar-figure">
+            <div class="glow"></div>
+            <div class="head">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+            </div>
+            <div class="body"></div>
+            <div class="arms">
+                <div class="arm"></div>
+                <div class="arm"></div>
+            </div>
+            <div class="legs">
+                <div class="leg"></div>
+                <div class="leg"></div>
+            </div>
+        </div>
+    </div>
+    
     <div class="nothing-header">
         <div class="nothing-logo">Nothing</div>
     </div>
@@ -196,7 +330,6 @@
     <script src="js/hud.js"></script>
     
     <script>
-        // Position floating controls randomly
         window.addEventListener('DOMContentLoaded', () => {
             const panel = document.querySelector('.controls-panel');
             const minX = 20, maxX = window.innerWidth - 420;
