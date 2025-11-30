@@ -10,7 +10,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000;
@@ -18,7 +18,7 @@
             overflow: hidden;
             height: 100vh;
         }
-        
+
         #canvas-container {
             width: 100%;
             height: 100%;
@@ -27,12 +27,12 @@
             left: 0;
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
         }
-        
+
         .visualize-logo-container {
-            position: absolute;
-            top: 50%;
+            position: fixed;
+            top: 80px;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             z-index: 5;
             width: 400px;
             height: 200px;
@@ -40,14 +40,14 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .visualize-logo {
             font-size: 96px;
             font-weight: 900;
             letter-spacing: 12px;
             text-transform: uppercase;
             color: #fff;
-            text-shadow: 
+            text-shadow:
                 0 0 20px rgba(0, 212, 255, 0.5),
                 0 0 40px rgba(0, 212, 255, 0.3),
                 0 0 60px rgba(0, 212, 255, 0.2);
@@ -55,49 +55,41 @@
             perspective: 1000px;
             transform-style: preserve-3d;
         }
-        
+
         @keyframes logo-glow {
             0%, 100% {
-                text-shadow: 
+                text-shadow:
                     0 0 20px rgba(0, 212, 255, 0.5),
                     0 0 40px rgba(0, 212, 255, 0.3),
                     0 0 60px rgba(0, 212, 255, 0.2);
-                letter-spacing: 12px;
             }
             50% {
-                text-shadow: 
+                text-shadow:
                     0 0 40px rgba(0, 212, 255, 0.8),
-                    0 0 60px rgba(0, 212, 255, 0.6),
+                    0 0 80px rgba(0, 212, 255, 0.6),
                     0 0 100px rgba(0, 212, 255, 0.4);
-                letter-spacing: 18px;
             }
         }
-        
+
         @keyframes logo-float {
-            0%, 100% { transform: translateY(0) rotateX(0deg); }
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
             50% { transform: translateY(-20px) rotateX(5deg); }
         }
-        
+
         .avatar-display {
-            position: absolute;
+            position: fixed;
+            top: 45%;
             left: 50%;
-            top: 50%;
             transform: translate(-50%, -50%);
-            width: 300px;
-            height: 400px;
+            z-index: 10;
+            width: 200px;
+            height: 300px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 1;
-            pointer-events: none;
         }
-        
-        .avatar-figure {
-            position: relative;
-            width: 150px;
-            height: 300px;
-        }
-        
+
         .head {
             position: absolute;
             top: 0;
@@ -105,107 +97,80 @@
             transform: translateX(-50%);
             width: 80px;
             height: 90px;
-            background: radial-gradient(circle at 30% 30%, #f0c0a0, #d4a574);
+            background: radial-gradient(circle at 30% 30%, #f5bc8d, #d4a574);
             border-radius: 50% 50% 45% 45%;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 48px rgba(255, 255, 255, 0.1);
         }
-        
+
         .eyes {
+            display: flex;
+            justify-content: space-between;
             position: absolute;
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
             width: 50px;
-            display: flex;
-            justify-content: space-between;
         }
-        
+
         .eye {
             width: 12px;
             height: 12px;
             background: #000;
             border-radius: 50%;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3);
         }
-        
+
         .body {
             position: absolute;
             top: 110px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 50px;
             height: 120px;
-            background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
-            border-radius: 20px 20px 10px 10px;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.15);
+            background: linear-gradient(to right, #333 0%, #222 50%, #333 100%);
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
         }
-        
-        .arms {
-            position: absolute;
-            top: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 160px;
-            height: 50px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
+
         .arm {
             width: 40px;
             height: 80px;
-            background: radial-gradient(ellipse at 30% 30%, #f5d5b0, #d4a574);
+            background: radial-gradient(ellipse at 30% 30%, #f5d5b8, #d4a574);
             border-radius: 50%;
+            border: 1px solid rgba(212, 165, 116, 0.3);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
-        
-        .legs {
+
+        .leg {
             position: absolute;
             top: 240px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        
-        .leg {
             width: 30px;
             height: 80px;
             background: #333;
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
         }
-        
+
         .glow {
             position: absolute;
             inset: -40px;
-            background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.15), transparent);
             border-radius: 50%;
-            animation: glow-pulse 3s ease-in-out infinite;
+            filter: blur(20px);
+            animation: pulse-glow 3s ease-in-out infinite;
         }
-        
-        @keyframes glow-pulse {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
         }
-        
-        .ui-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            pointer-events: none;
-        }
-        
+
         .command-section {
             pointer-events: auto;
             background: rgba(255, 255, 255, 0.05);
@@ -215,8 +180,13 @@
             padding: 40px;
             width: 100%;
             max-width: 600px;
+            position: fixed;
+            bottom: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
         }
-        
+
         .section-title {
             font-size: 14px;
             letter-spacing: 3px;
@@ -224,7 +194,7 @@
             color: #999;
             margin-bottom: 30px;
         }
-        
+
         #command-input {
             width: 100%;
             padding: 16px 0;
@@ -233,146 +203,137 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             color: #fff;
             font-size: 16px;
-            margin-bottom: 30px;
             outline: none;
             transition: border-color 0.3s;
         }
-        
-        #command-input:focus {
-            border-bottom-color: #fff;
-        }
-        
+
         #command-input::placeholder {
-            color: #666;
+            color: rgba(255, 255, 255, 0.4);
         }
-        
-        #command-button {
-            width: 100%;
-            padding: 14px 0;
-            background: #fff;
-            color: #000;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
+
+        #command-input:focus {
+            border-bottom-color: rgba(0, 212, 255, 0.8);
+        }
+
+        .controls-panel {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 20px;
+            width: 250px;
+            z-index: 50;
+            animation: floating 8s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+
+        .controls-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 15px;
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        .controls-text {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        #execute-button {
+            width: 100%;
+            padding: 12px 0;
+            margin-top: 20px;
+            background: #fff;
+            border: none;
+            border-radius: 0;
+            color: #000;
+            font-weight: bold;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
         }
-        
-        #command-button:hover {
-            opacity: 0.8;
-            transform: scale(0.99);
+
+        #execute-button:hover {
+            background: #ddd;
+            transform: scale(1.02);
         }
-        
-        .controls-panel {
-            position: fixed;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 2px;
-            padding: 24px 32px;
-            max-width: 380px;
-            z-index: 50;
-            pointer-events: auto;
-            animation: floating 8s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(0, -20px); }
-        }
-        
-        .controls-panel:hover {
-            animation-play-state: paused;
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .control-info {
-            font-size: 12px;
-            color: #999;
-            line-height: 1.8;
-            letter-spacing: 0.5px;
-        }
-        
-        .control-info strong {
-            color: #fff;
-            font-weight: 600;
-        }
-        
-        .control-info p {
-            margin-bottom: 8px;
+
+        #execute-button:active {
+            transform: scale(0.98);
         }
     </style>
 </head>
 <body>
     <div id="canvas-container"></div>
-    
+
     <div class="visualize-logo-container">
         <div class="visualize-logo">VISUALIZE</div>
     </div>
-    
+
     <div class="avatar-display">
-        <div class="avatar-figure">
-            <div class="glow"></div>
-            <div class="head">
-                <div class="eyes">
-                    <div class="eye"></div>
-                    <div class="eye"></div>
-                </div>
-            </div>
-            <div class="body"></div>
-            <div class="arms">
-                <div class="arm"></div>
-                <div class="arm"></div>
-            </div>
-            <div class="legs">
-                <div class="leg"></div>
-                <div class="leg"></div>
+        <div class="head">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
             </div>
         </div>
+        <div class="body"></div>
+        <div class="leg"></div>
+        <div class="glow"></div>
     </div>
-    
-    <div class="ui-wrapper">
-        <div class="command-section">
-            <div class="section-title">Experience The Future</div>
-            <input type="text" id="command-input" placeholder="Enter command" />
-            <button id="command-button">Execute</button>
-        </div>
+
+    <div class="command-section">
+        <div class="section-title">EXPERIENCE THE FUTURE</div>
+        <input type="text" id="command-input" placeholder="Enter command">
+        <button id="execute-button">EXECUTE</button>
     </div>
-    
+
     <div class="controls-panel">
-        <div class="control-info">
-            <p><strong>CONTROLS</strong></p>
-            <p>Drag to rotate • Scroll to zoom</p>
-            <p>Arrow keys to navigate • Press R to reset</p>
-            <p>Press SPACE to toggle animation</p>
+        <div class="controls-title">CONTROLS</div>
+        <div class="controls-text">
+            Drag to rotate • Scroll to zoom<br><br>
+            Arrow keys to navigate • Press R to reset<br><br>
+            Press SPACE to toggle animation
         </div>
     </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="js/scene.js"></script>
-    <script src="js/camera.js"></script>
-    <script src="js/renderer.js"></script>
-    <script src="js/models.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/controls.js"></script>
-    <script src="js/avatar.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/hud.js"></script>
-    
+
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
+        // Random positioning for controls panel in corners
+        function positionControlsPanel() {
             const panel = document.querySelector('.controls-panel');
-            const minX = 20, maxX = window.innerWidth - 420;
-            const minY = 100, maxY = window.innerHeight - 200;
-            
-            const randomX = Math.random() * (maxX - minX) + minX;
-            const randomY = Math.random() * (maxY - minY) + minY;
-            
-            panel.style.left = randomX + 'px';
-            panel.style.top = randomY + 'px';
+            const positions = [
+                { top: '20px', left: '20px' },
+                { top: '20px', right: '20px', left: 'auto' },
+                { bottom: '20px', left: '20px', top: 'auto' },
+                { bottom: '20px', right: '20px', left: 'auto', top: 'auto' }
+            ];
+            const pos = positions[Math.floor(Math.random() * positions.length)];
+            Object.assign(panel.style, pos);
+        }
+
+        positionControlsPanel();
+
+        // Command execution
+        document.getElementById('execute-button').addEventListener('click', function() {
+            const input = document.getElementById('command-input');
+            const command = input.value.trim();
+            if (command) {
+                console.log('Command executed:', command);
+                input.value = '';
+            }
+        });
+
+        document.getElementById('command-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('execute-button').click();
+            }
         });
     </script>
 </body>
