@@ -1,6 +1,9 @@
 # 3D Portfolio Model
 
 > Interactive 3D visualization of my portfolio website using Three.js. This project renders my web page in a 3D environment with smooth animations and interactive controls.
+>
+> 🚀 [Live Demo](https://purvanshjoshi.github.io/3D-Portfolio-Model/)
+> 
 
 ## ✨ Features
 
